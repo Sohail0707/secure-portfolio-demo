@@ -1,0 +1,23 @@
+{
+  "name": "secure-portfolio-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Server-side blur and watermark demo for protected portfolio images (Netlify Functions + sharp).",
+  "engines": {
+    "node": ">=20.9"
+  },
+  "scripts": {
+    "dev": "netlify dev",
+    "deploy:prod": "npm install --no-save --os=linux --cpu=x64 --libc=glibc sharp@0.35.5 && netlify deploy --prod && npm install",
+    "generate:images": "node scripts/generate-images.mjs",
+    "generate:watermark": "node scripts/build-watermark-paths.mjs"
+  },
+  "dependencies": {
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "5.3.0",
+    "opentype.js": "2.0.0"
+  }
+}

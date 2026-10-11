@@ -1,0 +1,44 @@
+[build]
+  publish = "public"
+  functions = "functions"
+  command = "echo 'No build step'"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["sharp"]
+  included_files = ["private-images/**"]
+
+[dev]
+  publish = "public"
+  functions = "functions"
+  port = 8888
+  framework = "#static"
+
+[[redirects]]
+  from = "/access"
+  to = "/.netlify/functions/access"
+  status = 200
+
+[[redirects]]
+  from = "/reset"
+  to = "/.netlify/functions/reset"
+  status = 200
+
+[[redirects]]
+  from = "/api/status"
+  to = "/.netlify/functions/status"
+  status = 200
+
+[[redirects]]
+  from = "/api/image"
+  to = "/.netlify/functions/image"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

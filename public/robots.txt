@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /api/
+Disallow: /access
+Disallow: /reset
+Disallow: /.netlify/
