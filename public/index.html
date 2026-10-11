@@ -3,97 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Protected Portfolio Demo</title>
-  <meta name="description" content="Protected portfolio images are blurred and watermarked on the server, so the browser never receives the original.">
+  <title>Our Work · Northline Studio</title>
+  <meta name="description" content="Selected work by Northline Studio.">
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <div id="notice" class="notice" role="status" hidden></div>
+  <div id="access-banner" class="access-banner" hidden>Private portfolio access</div>
 
-  <header class="hero wrap">
-    <span id="status-pill" class="pill" data-access="loading"><span class="dot"></span><span id="status-text">Checking access…</span></span>
-    <h1>The browser never receives a protected image.</h1>
-    <p class="lede">Blur and watermark are created on the server. Remove the overlay, open the image URL, or check dev tools. The original isn't there.</p>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">Northline Studio</a>
+      <nav aria-label="Main"><a href="/" aria-current="page">Portfolio</a></nav>
+    </div>
   </header>
 
-  <main>
-    <section class="wrap section" aria-labelledby="compare-title">
-      <h2 id="compare-title">Why CSS blur fails</h2>
-      <p class="section-sub">Same idea, two implementations. Press each button.</p>
-
-      <div class="compare">
-        <article class="compare-card bad">
-          <div class="compare-head">
-            <span class="tag tag-bad">Leaks</span>
-            <h3>CSS blur (the common approach)</h3>
-          </div>
-          <div class="frame">
-            <img id="css-img" class="css-blurred" src="/sample-css.jpg" alt="Sample project image with a CSS blur filter" width="800" height="533">
-          </div>
-          <button type="button" class="btn" id="css-toggle" aria-pressed="false">Remove the blur</button>
-          <p class="verdict" id="css-verdict">The full image was in the browser all along.</p>
-        </article>
-
-        <article class="compare-card good">
-          <div class="compare-head">
-            <span class="tag tag-good">Protected</span>
-            <h3>Server-side blur (this demo)</h3>
-          </div>
-          <div class="frame">
-            <img id="server-img" class="server-scaled" src="/api/image?id=4" alt="Project 4 as delivered by the server">
-          </div>
-          <button type="button" class="btn" id="server-toggle" aria-pressed="false">Remove the blur</button>
-          <p class="verdict" id="server-verdict">There's nothing underneath to reveal.</p>
-        </article>
-      </div>
+  <main class="wrap">
+    <section class="intro">
+      <h1>Our Work</h1>
+      <p>Brand, product and web projects for teams who care about the details.</p>
     </section>
 
-    <section class="wrap section" aria-labelledby="grid-title">
-      <h2 id="grid-title">Portfolio</h2>
-      <p class="section-sub">Projects 1 to 3 are public. Projects 4 to 6 need approved access.</p>
-      <div class="grid" id="grid"></div>
-    </section>
+    <section class="grid" id="grid" aria-label="Projects"></section>
 
-    <section class="wrap section" aria-labelledby="test-title">
-      <h2 id="test-title">Test it yourself</h2>
-      <div class="panel">
-        <div class="test-row">
-          <a class="btn btn-ghost" href="/api/image?id=5" target="_blank" rel="noopener">Open a locked image in a new tab</a>
-          <p class="test-note">This is the exact URL the page uses for project 5.</p>
-        </div>
-        <div class="test-row">
-          <button type="button" class="btn btn-ghost" id="test-original">Try the original file URL</button>
-          <output class="result" id="result-original" aria-live="polite"></output>
-        </div>
-        <div class="test-row">
-          <button type="button" class="btn btn-ghost" id="test-received">Show what the browser received</button>
-          <output class="result" id="result-received" aria-live="polite"></output>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap section" aria-labelledby="links-title">
-      <h2 id="links-title">Demo links</h2>
-      <p class="section-sub">Each link sets a 7-day, HttpOnly cookie and brings you back here.</p>
-      <div class="links">
-        <a class="link-card" href="/access?token=demo-approved-7f3k9q">
-          <strong>Approved link</strong>
-          <span>See projects 4 to 6 in full, watermarked.</span>
-        </a>
-        <a class="link-card" href="/access?token=demo-revoked-2m8x4p">
-          <strong>Revoked link</strong>
-          <span>A link you switched off. Back to blurred previews.</span>
-        </a>
-        <a class="link-card" href="/reset">
-          <strong>Reset to public visitor</strong>
-          <span>Clear the cookie.</span>
-        </a>
-      </div>
-    </section>
+    <p class="test-hint">Testing this? Right-click a locked image and open it in a new tab. You'll only get a tiny blurred file, never the original.</p>
   </main>
 
-  <footer class="wrap footer">Demo built by Sohail Rana · <a href="https://sohailrana.com" rel="noopener">sohailrana.com</a></footer>
+  <footer class="wrap footer">Demo by Sohail Rana · <a href="https://sohailrana.com" rel="noopener">sohailrana.com</a></footer>
 
   <dialog id="request-modal" class="modal" aria-labelledby="modal-title">
     <form id="request-form" method="dialog" class="modal-body">
